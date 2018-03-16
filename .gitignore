@@ -1,13 +1,15 @@
-*.bak
-*.db
-*.avi
-*.pdf
-*.ps
-*.mid
-*.midi
-*.mp3
-*.aif
-*.wav
-# Some versions of Finale have a bug and randomly save extra copies of
-# the music source as "<Filename> copy.mus"
-*copy.mus
+# Log file
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# IDE Files #
+/.settings/
+/.project
+/.classpath
