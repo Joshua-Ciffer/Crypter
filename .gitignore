@@ -1,4 +1,4 @@
-# Log file
+# Log files
 *.log
 
 # Package Files
@@ -9,7 +9,7 @@
 *.tar.gz
 *.rar
 
-# IDE Files #
+# IDE Files
 /.settings/
 /.project
 /.classpath
