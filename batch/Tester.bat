@@ -3,6 +3,7 @@
 
 @echo off
 
-set x= hello there dfdvfdfv sdf 
-echo %x% 
+for /l %%i in (5, 1, 10) do (
+	echo %%i
+)
 pause

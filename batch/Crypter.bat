@@ -6,15 +6,15 @@ setlocal
 :: Debug List
 REM User Input crashes when " are entered
 
-set _version=3.17.18
+set version=3.17.18
 
-title Crypter %_version%
+title Crypter %version%
 color 1F
 cls
 
 :MainMenu
 	cls
-	echo Crypter Version: %_version%
+	echo Crypter Version: %version%
 	echo   _____              __
 	echo  / ___/_____ _____  / /____ ____
 	echo / /__/ __/ // / _ \/ __/ -_) __/
@@ -262,7 +262,7 @@ goto mainmenu
 	echo  / __ ^|/ _ \/ _ \/ // / __/
 	echo /_/ ^|_/_.__/\___/\_,_/\__/
 	echo.
-	echo -Program Version: %_version%
+	echo -Program Version: %version%
 	echo -Programming By: Joshua Ciffer
 	echo -Programming Resources: https://www.ss64.com/nt/
 	echo 	-Batch Commands Guide
