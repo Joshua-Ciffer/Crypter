@@ -1,21 +1,19 @@
+@echo off
+setlocal
 :: Author: Joshua Ciffer
 :: Version: 03/16/2018
 
 :: Debug List
 REM User Input crashes when " are entered
 
-:ProgramInitialization
-	@echo off
-	title Initializing Crypter...
-	Color 1F
-	SetLocal EnableExtensions
-	SetLocal EnableDelayedExpansion
-	cls
-	goto :MainMenu
+set _version=3.17.18
+
+title Crypter %_version%
+color 1F
+cls
 
 :MainMenu
 	cls
-	title Main Menu
 	echo Crypter Version: 6.7.2017
 	echo   _____              __
 	echo  / ___/_____ _____  / /____ ____
@@ -256,272 +254,6 @@ goto mainmenu
 	cls
 	goto :MainMenu
 
-:Options
-	cls
-	title Options
-	echo   ____       __  _
-	echo  / __ \___  / /_(_)__  ___  ___
-	echo / /_/ / _ \/ __/ / _ \/ _ \(_-^<
-	echo \____/ /__/\__/_/\___/_//_/___/
-	echo     /_/
-	echo.
-	echo -Type "Back" to return to the Main Menu.
-	echo -Type "Initialize" to restart the program.
-	echo -Type "Off" to turn echo off.
-	echo -Type "On" to turn echo on.
-	echo -Type "EE" to Enable Extensions.
-	echo -Type "DE" to Disable Extensions.
-	echo -Type "EDE" to Enable Delayed Expansion.
-	echo -Type "DDE" to Disable Delayed Expansion.
-	echo -Type "goto" to goto a specified section of the program.
-	echo -Type "CMD" to launch an instance of Command Prompt.
-	echo -Type "PS" to launch an instance of Power Shell.
-	echo -Type "exit" to close the program.
-	echo.
-	Set /P Options=Enter an option:
-	if /I "%Options%"=="Back" (
-		Set "Options="
-		goto :MainMenu
-	) else if /I "%Options%"=="Initialize" (
-		Set "Options="
-		goto :ProgramInitialization
-	) else if /I "%Options%"=="Off" (
-		Set "Options="
-		echo.
-		echo echo turned off. Press any key to return to Options...
-		pause >nul
-		@echo off
-		goto :Options
-	) else if /I "%Options%"=="On" (
-		Set "Options="
-		echo.
-		echo echo turned on. Press any key to return to Options...
-		pause >nul
-		@echo on
-		goto :Options
-	) else if /I "%Options%"=="EE" (
-		Set "Options="
-		echo.
-		echo Extensions Enabled. Press any key to return to Options...
-		pause >nul
-		SetLocal EnableExtensions
-		goto :Options
-	) else if /I "%Options%"=="DE" (
-		Set "Options="
-		echo.
-		echo Extensions Disabled. Press any key to return to Options...
-		pause >nul
-		EndLocal
-		goto :Options
-	) else if /I "%Options%"=="EDE" (
-		Set "Options="
-		echo.
-		echo Delayed Expansion Enabled. Press any key to return to Options...
-		pause >nul
-		SetLocal EnableDelayedExpansion
-		goto :Options
-	) else if /I "%Options%"=="DDE" (
-		Set "Options="
-		echo.
-		echo Delayed Expansion Disabled. Press any key to return to Options...
-		pause >nul
-		SetLocal DisableDelayedExpansion
-		goto :Options
-	) else if /I "%Options%"=="goto" (
-		Set "Options="
-		goto :goto
-	) else if /I "%Options%"=="CMD" (
-		Set "Options="
-		goto :CMD
-	) else if /I "%Options%"=="PS" (
-		Set "Options="
-		goto :PS
-	) else if /I "%Options%"=="exit" (
-		Set "Options="
-		exit
-	) else (
-		Set "Options="
-		cls
-		title Options Error^^!
-		echo    ____                   __
-		echo   / __/__________  ____  / /
-		echo  / _// __/ __/ _ \/ __/ /_/
-		echo /___/_/ /_/  \___/_/   (_^)
-		echo.
-		echo Error^^! Enter one of the given options. Press any key to return to Options...
-		pause >nul
-		cls
-		goto :Options
-	)
-
-:goto
-	echo.
-	echo Below is an outline of the sections of this program.
-	echo.
-	echo -ProgramInitialization
-	echo -MainMenu
-	echo -EncryptionMenu
-	echo -TextEncryption
-	echo -FilesEncryption
-	echo -DecryptionMenu
-	echo -TextDecryption
-	echo -FilesDecryption
-	echo -Help
-	echo -Options
-	echo -goto
-	echo -CMD
-	echo -PS
-	echo -About
-	echo -FatalErrorPrevention
-	echo.
-	Set /P goto=Which section of the program do you want to goto?:
-	if /I "%goto%"=="ProgramInitialization" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="MainMenu" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="EncryptionMenu" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="TextEncryption" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="FilesEncryption" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="DecryptionMenu" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="TextDecryption" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="FilesDecryption" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="Help" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="Options" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="goto" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="CMD" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="PS" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="About" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else if /I "%goto%"=="FatalErrorPrevention" (
-		echo.
-		echo Press any key to jump to %goto%...
-		pause >nul
-		goto :%goto%
-		Set "goto="
-	) else (
-		Set "Options="
-		echo.
-		echo Error^^! The section you entered doesn't exist. Press any key to return to Options...
-		pause >nul
-		cls
-		goto :Options
-	)
-
-:CMD
-	cls
-	title CMD
-	echo   _______  ______
-	echo  / ___/  ^|/  / _ \
-	echo / /__/ /^|_/ / // /
-	echo \___/_/  /_/____/
-	echo.
-	echo -Type "Back" to return to Options.
-	echo -Type any Command Prompt Batch command to run that command.
-	echo.
-	Set /P CMD=Enter a command:
-	if /I "%~1%CMD%"=="Back" (
-		Set "CMD="
-		goto :Options
-	) else (
-		Set "CMD="
-		echo.
-		%CMD%
-		echo.
-		pause
-		goto :CMD
-	)
-
-:PS
-	cls
-	title PowerShell
-	echo    ___                     ______       ____
-	echo   / _ \___ _    _____ ____/ __/ /  ___ / / /
-	echo  / ___/ _ \ ^|/^|/ / -_) __/\ \/ _ \/ -_) / /
-	echo /_/   \___/__,__/\__/_/ /___/_//_/\__/_/_/
-	echo.
-	echo -Type "Back" to return to Options.
-	echo -Type any PowerShell command to run that command.
-	echo.
-	Set /P PS=Enter a command:
-	if /I "%~1%PS%"=="Back" (
-		Set "PS="
-		goto :Options
-	) else (
-		Set "PS="
-		echo.
-		PowerShell %PS%
-		echo.
-		pause
-		goto :PS
-	)
-
 :About
 	cls
 	title About
@@ -530,7 +262,7 @@ goto mainmenu
 	echo  / __ ^|/ _ \/ _ \/ // / __/
 	echo /_/ ^|_/_.__/\___/\_,_/\__/
 	echo.
-	echo -Program Version: 6.7.2017
+	echo -Program Version: %_version%
 	echo -Programming By: Joshua Ciffer
 	echo -Programming Resources: https://www.ss64.com/nt/
 	echo 	-Batch Commands Guide
@@ -542,19 +274,4 @@ goto mainmenu
 	cls
 	goto :MainMenu
 
-:FatalErrorPrevention
-	else (
-		cls
-		title FATAL ERROR^^!
-		echo    ____                   __
-		echo   / __/__________  ____  / /
-		echo  / _// __/ __/ _ \/ __/ /_/
-		echo /___/_/ /_/  \___/_/   (_^)
-		echo.
-		echo An unhandled exception has occurred. Press any key to restart the program...
-		pause >nul
-		cls
-		goto :ProgramInitialization
-		pause
-		exit
-	)
+endlocal
