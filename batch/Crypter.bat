@@ -14,7 +14,7 @@ cls
 
 :MainMenu
 	cls
-	echo Crypter Version: 6.7.2017
+	echo Crypter Version: %_version%
 	echo   _____              __
 	echo  / ___/_____ _____  / /____ ____
 	echo / /__/ __/ // / _ \/ __/ -_) __/
