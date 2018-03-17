@@ -1,111 +1,105 @@
-::PROGRAM HEADER::
-::****************************************************
-::*Program......: Crypter.bat                        *
-::*Written By...: Joshua Ciffer                      *
-::*Date.........: 6/7/2017                           *
-::*Version......: Alpha                              *
-::****************************************************
+:: Author: Joshua Ciffer
+:: Version: 03/16/2018
 
-::Debug List::
+:: Debug List
 REM User Input crashes when " are entered
 
-::START OF PROGRAM::
 :ProgramInitialization
-	@Echo off
-	Title Initializing Crypter...
+	@echo off
+	title Initializing Crypter...
 	Color 1F
 	SetLocal EnableExtensions
 	SetLocal EnableDelayedExpansion
-	Cls
-	Goto :MainMenu
+	cls
+	goto :MainMenu
 
 :MainMenu
-	Cls
-	Title Main Menu
-	Echo Crypter Version: 6.7.2017
-	Echo   _____              __
-	Echo  / ___/_____ _____  / /____ ____
-	Echo / /__/ __/ // / _ \/ __/ -_) __/
-	Echo \___/_/  \_/ / /__/\__/\__/_/
-	Echo         /___/_/
-	Echo.
-	Echo -Type "Encrypt" to go to the Encryption Menu.
-	Echo -Type "Decrypt" to go to the Decryption Menu.
-	Echo -Type "Help" for instructions.
-	Echo -Type "Options" for other settings and debugging.
-	Echo -Type "About" for credits.
-	Echo -Type "Exit" to close the program.
-	Echo.
+	cls
+	title Main Menu
+	echo Crypter Version: 6.7.2017
+	echo   _____              __
+	echo  / ___/_____ _____  / /____ ____
+	echo / /__/ __/ // / _ \/ __/ -_) __/
+	echo \___/_/  \_/ / /__/\__/\__/_/
+	echo         /___/_/
+	echo.
+	echo -Type "Encrypt" to go to the Encryption Menu.
+	echo -Type "Decrypt" to go to the Decryption Menu.
+	echo -Type "Help" for instructions.
+	echo -Type "Options" for other settings and debugging.
+	echo -Type "About" for credits.
+	echo -Type "exit" to close the program.
+	echo.
 	Set /P MainMenu=Enter an option:
-	If /I "%MainMenu%"=="Encrypt" (
+	if /I "%MainMenu%"=="Encrypt" (
 		Set "MainMenu="
-		Goto :EncryptionMenu
-	) Else If /I "%MainMenu%"=="Decrypt" (
+		goto :EncryptionMenu
+	) else if /I "%MainMenu%"=="Decrypt" (
 		Set "MainMenu="
-		Goto :DecryptionMenu
-	) Else If /I "%MainMenu%"=="Help" (
+		goto :DecryptionMenu
+	) else if /I "%MainMenu%"=="Help" (
 		Set "MainMenu="
-		Goto :Help
-	) Else If /I "%MainMenu%"=="Options" (
+		goto :Help
+	) else if /I "%MainMenu%"=="Options" (
 		Set "MainMenu="
-		Goto :Options
-	) Else If /I "%MainMenu%"=="About" (
+		goto :Options
+	) else if /I "%MainMenu%"=="About" (
 		Set "MainMenu="
-		Goto :About
-	) Else If /I "%MainMenu%"=="Exit" (
+		goto :About
+	) else if /I "%MainMenu%"=="exit" (
 		Set "MainMenu="
-		Exit
-	) Else (
+		exit
+	) else (
 		Set "MainMenu="
-		Cls
-		Title Main Menu Error^^!
-		Echo    ____                   __
-		Echo   / __/__________  ____  / /
-		Echo  / _// __/ __/ _ \/ __/ /_/
-		Echo /___/_/ /_/  \___/_/   (_^)
-		Echo.
-		Echo Error^^! Enter one of the given options. Press any key to return to the Main Menu...
-		Pause >nul
-		Cls
-		Goto :MainMenu
+		cls
+		title Main Menu Error^^!
+		echo    ____                   __
+		echo   / __/__________  ____  / /
+		echo  / _// __/ __/ _ \/ __/ /_/
+		echo /___/_/ /_/  \___/_/   (_^)
+		echo.
+		echo Error^^! Enter one of the given options. Press any key to return to the Main Menu...
+		pause >nul
+		cls
+		goto :MainMenu
 	)
 
 :EncryptionMenu
-	Cls
-	Title Encryption Menu
-	Echo       ____                       __  _             __  ___
-	Echo      / __/__  __________ _____  / /_(_)__  ___    /  ^|/  /__ ___  __ __
-	Echo     / _// _ \/ __/ __/ // / _ \/ __/ / _ \/ _ \  / /^|_/ / -_) _ \/ // /
-	Echo    /___/_//_/\__/_/  \_/ / /__/\__/_/\___/_//_/ /_/  /_/\__/_//_/\_,_/
-	Echo                     /___/_/
-	Echo.
-	Echo -Type "Back" to return to the Main Menu.
-	Echo -Type "Text" to Encrypt text.
-	Echo -Type "Files" to Encrypt files.
-	Echo.
+	cls
+	title Encryption Menu
+	echo       ____                       __  _             __  ___
+	echo      / __/__  __________ _____  / /_(_)__  ___    /  ^|/  /__ ___  __ __
+	echo     / _// _ \/ __/ __/ // / _ \/ __/ / _ \/ _ \  / /^|_/ / -_) _ \/ // /
+	echo    /___/_//_/\__/_/  \_/ / /__/\__/_/\___/_//_/ /_/  /_/\__/_//_/\_,_/
+	echo                     /___/_/
+	echo.
+	echo -Type "Back" to return to the Main Menu.
+	echo -Type "Text" to Encrypt text.
+	echo -Type "Files" to Encrypt files.
+	echo.
 	Set /P EncryptionMenu=What would you like to Encrypt?:
-	If /I "%EncryptionMenu%"=="Back" (
+	if /I "%EncryptionMenu%"=="Back" (
 		Set "EncryptionMenu="
-		Goto :MainMenu
-	) Else If /I "%EncryptionMenu%"=="Text" (
+		goto :MainMenu
+	) else if /I "%EncryptionMenu%"=="Text" (
 		Set "EncryptionMenu="
-		Goto :TextEncryption
-	) Else If /I "%EncryptionMenu%"=="Files" (
+		goto :TextEncryption
+	) else if /I "%EncryptionMenu%"=="Files" (
 		Set "EncryptionMenu="
-		Goto :FilesEncryption
-	) Else (
+		goto :FilesEncryption
+	) else (
 		Set "EncryptionMenu="
-		Cls
-		Title Encryption Menu Error^^!
-		Echo    ____                   __
-		Echo   / __/__________  ____  / /
-		Echo  / _// __/ __/ _ \/ __/ /_/
-		Echo /___/_/ /_/  \___/_/   (_^)
-		Echo.
-		Echo Error^^! Enter one of the given options. Press any key to return to the Encryption Menu...
-		Pause >nul
-		Cls
-		Goto :EncryptionMenu
+		cls
+		title Encryption Menu Error^^!
+		echo    ____                   __
+		echo   / __/__________  ____  / /
+		echo  / _// __/ __/ _ \/ __/ /_/
+		echo /___/_/ /_/  \___/_/   (_^)
+		echo.
+		echo Error^^! Enter one of the given options. Press any key to return to the Encryption Menu...
+		pause >nul
+		cls
+		goto :EncryptionMenu
 	)
 
 :TextEncryption
@@ -149,53 +143,53 @@ cls
 goto mainmenu
 
 	::Set %EncryptedInputString%=
-	::Echo %InputString%
-	Echo.
-	Pause
-	Goto :TextEncryption
+	::echo %InputString%
+	echo.
+	pause
+	goto :TextEncryption
 
 
 :FilesEncryption
 
 ::Fatal Error Prevention
-	Goto :FatalErrorPrevention
+	goto :FatalErrorPrevention
 
 :DecryptionMenu
-	Cls
-	Title Decryption Menu
-	Echo    ___                        __  _             __  ___
-	Echo   / _ \___ __________ _____  / /_(_)__  ___    /  ^|/  /__ ___  __ __
-	Echo  / // / -_) __/ __/ // / _ \/ __/ / _ \/ _ \  / /^|_/ / -_) _ \/ // /
-	Echo /____/\__/\__/_/  \_/ / /__/\__/_/\___/_//_/ /_/  /_/\__/_//_/\_,_/
-	Echo              	  /___/_/
-	Echo.
-	Echo -Type "Back" to return to the Main Menu.
-	Echo -Type "Text" to Decrypt text.
-	Echo -Type "Files" to Decrypt files.
-	Echo.
+	cls
+	title Decryption Menu
+	echo    ___                        __  _             __  ___
+	echo   / _ \___ __________ _____  / /_(_)__  ___    /  ^|/  /__ ___  __ __
+	echo  / // / -_) __/ __/ // / _ \/ __/ / _ \/ _ \  / /^|_/ / -_) _ \/ // /
+	echo /____/\__/\__/_/  \_/ / /__/\__/_/\___/_//_/ /_/  /_/\__/_//_/\_,_/
+	echo              	  /___/_/
+	echo.
+	echo -Type "Back" to return to the Main Menu.
+	echo -Type "Text" to Decrypt text.
+	echo -Type "Files" to Decrypt files.
+	echo.
 	Set /P DecryptionMenu=What would you like to Decrypt?:
-	If /I "%DecryptionMenu%"=="Back" (
+	if /I "%DecryptionMenu%"=="Back" (
 		Set "DecryptionMenu="
-		Goto :MainMenu
-	) Else If /I "%DecryptionMenu%"=="Text" (
+		goto :MainMenu
+	) else if /I "%DecryptionMenu%"=="Text" (
 		Set "DecryptionMenu="
-		Goto :TextDecryption
-	) Else If /I "%DecryptionMenu%"=="Files" (
+		goto :TextDecryption
+	) else if /I "%DecryptionMenu%"=="Files" (
 		Set "DecryptionMenu="
-		Goto :FilesDecryption
-	) Else (
+		goto :FilesDecryption
+	) else (
 		Set "DecryptionMenu="
-		Cls
-		Title Decryption Menu Error^^!
-		Echo    ____                   __
-		Echo   / __/__________  ____  / /
-		Echo  / _// __/ __/ _ \/ __/ /_/
-		Echo /___/_/ /_/  \___/_/   (_^)
-		Echo.
-		Echo Error^^! Enter one of the given options. Press any key to return to the Decryption Menu...
-		Pause >nul
-		Cls
-		Goto :DecryptionMenu
+		cls
+		title Decryption Menu Error^^!
+		echo    ____                   __
+		echo   / __/__________  ____  / /
+		echo  / _// __/ __/ _ \/ __/ /_/
+		echo /___/_/ /_/  \___/_/   (_^)
+		echo.
+		echo Error^^! Enter one of the given options. Press any key to return to the Decryption Menu...
+		pause >nul
+		cls
+		goto :DecryptionMenu
 	)
 
 :TextDecryption
@@ -243,326 +237,324 @@ goto mainmenu
 :FilesDecryption
 
 ::Fatal Error Prevention
-	Goto :FatalErrorPrevention
+	goto :FatalErrorPrevention
 
 :Help
-	Cls
-	Title Help
-	Echo    __ __    __
-	Echo   / // /__ / /__
-	Echo  / _  / -_) / _ \
-	Echo /_//_/\__/_/ /__/
-	Echo           /_/
-	Echo.
-	Echo -
-	Echo -
-	Echo.
-	Echo Press any key to return to the Main Menu...
-	Pause >nul
-	Cls
-	Goto :MainMenu
+	cls
+	title Help
+	echo    __ __    __
+	echo   / // /__ / /__
+	echo  / _  / -_) / _ \
+	echo /_//_/\__/_/ /__/
+	echo           /_/
+	echo.
+	echo -
+	echo -
+	echo.
+	echo Press any key to return to the Main Menu...
+	pause >nul
+	cls
+	goto :MainMenu
 
 :Options
-	Cls
-	Title Options
-	Echo   ____       __  _
-	Echo  / __ \___  / /_(_)__  ___  ___
-	Echo / /_/ / _ \/ __/ / _ \/ _ \(_-^<
-	Echo \____/ /__/\__/_/\___/_//_/___/
-	Echo     /_/
-	Echo.
-	Echo -Type "Back" to return to the Main Menu.
-	Echo -Type "Initialize" to restart the program.
-	Echo -Type "Off" to turn Echo off.
-	Echo -Type "On" to turn Echo on.
-	Echo -Type "EE" to Enable Extensions.
-	Echo -Type "DE" to Disable Extensions.
-	Echo -Type "EDE" to Enable Delayed Expansion.
-	Echo -Type "DDE" to Disable Delayed Expansion.
-	Echo -Type "Goto" to goto a specified section of the program.
-	Echo -Type "CMD" to launch an instance of Command Prompt.
-	Echo -Type "PS" to launch an instance of Power Shell.
-	Echo -Type "Exit" to close the program.
-	Echo.
+	cls
+	title Options
+	echo   ____       __  _
+	echo  / __ \___  / /_(_)__  ___  ___
+	echo / /_/ / _ \/ __/ / _ \/ _ \(_-^<
+	echo \____/ /__/\__/_/\___/_//_/___/
+	echo     /_/
+	echo.
+	echo -Type "Back" to return to the Main Menu.
+	echo -Type "Initialize" to restart the program.
+	echo -Type "Off" to turn echo off.
+	echo -Type "On" to turn echo on.
+	echo -Type "EE" to Enable Extensions.
+	echo -Type "DE" to Disable Extensions.
+	echo -Type "EDE" to Enable Delayed Expansion.
+	echo -Type "DDE" to Disable Delayed Expansion.
+	echo -Type "goto" to goto a specified section of the program.
+	echo -Type "CMD" to launch an instance of Command Prompt.
+	echo -Type "PS" to launch an instance of Power Shell.
+	echo -Type "exit" to close the program.
+	echo.
 	Set /P Options=Enter an option:
-	If /I "%Options%"=="Back" (
+	if /I "%Options%"=="Back" (
 		Set "Options="
-		Goto :MainMenu
-	) Else If /I "%Options%"=="Initialize" (
+		goto :MainMenu
+	) else if /I "%Options%"=="Initialize" (
 		Set "Options="
-		Goto :ProgramInitialization
-	) Else If /I "%Options%"=="Off" (
+		goto :ProgramInitialization
+	) else if /I "%Options%"=="Off" (
 		Set "Options="
-		Echo.
-		Echo Echo turned off. Press any key to return to Options...
-		Pause >nul
-		@Echo off
-		Goto :Options
-	) Else If /I "%Options%"=="On" (
+		echo.
+		echo echo turned off. Press any key to return to Options...
+		pause >nul
+		@echo off
+		goto :Options
+	) else if /I "%Options%"=="On" (
 		Set "Options="
-		Echo.
-		Echo Echo turned on. Press any key to return to Options...
-		Pause >nul
-		@Echo on
-		Goto :Options
-	) Else If /I "%Options%"=="EE" (
+		echo.
+		echo echo turned on. Press any key to return to Options...
+		pause >nul
+		@echo on
+		goto :Options
+	) else if /I "%Options%"=="EE" (
 		Set "Options="
-		Echo.
-		Echo Extensions Enabled. Press any key to return to Options...
-		Pause >nul
+		echo.
+		echo Extensions Enabled. Press any key to return to Options...
+		pause >nul
 		SetLocal EnableExtensions
-		Goto :Options
-	) Else If /I "%Options%"=="DE" (
+		goto :Options
+	) else if /I "%Options%"=="DE" (
 		Set "Options="
-		Echo.
-		Echo Extensions Disabled. Press any key to return to Options...
-		Pause >nul
+		echo.
+		echo Extensions Disabled. Press any key to return to Options...
+		pause >nul
 		EndLocal
-		Goto :Options
-	) Else If /I "%Options%"=="EDE" (
+		goto :Options
+	) else if /I "%Options%"=="EDE" (
 		Set "Options="
-		Echo.
-		Echo Delayed Expansion Enabled. Press any key to return to Options...
-		Pause >nul
+		echo.
+		echo Delayed Expansion Enabled. Press any key to return to Options...
+		pause >nul
 		SetLocal EnableDelayedExpansion
-		Goto :Options
-	) Else If /I "%Options%"=="DDE" (
+		goto :Options
+	) else if /I "%Options%"=="DDE" (
 		Set "Options="
-		Echo.
-		Echo Delayed Expansion Disabled. Press any key to return to Options...
-		Pause >nul
+		echo.
+		echo Delayed Expansion Disabled. Press any key to return to Options...
+		pause >nul
 		SetLocal DisableDelayedExpansion
-		Goto :Options
-	) Else If /I "%Options%"=="Goto" (
+		goto :Options
+	) else if /I "%Options%"=="goto" (
 		Set "Options="
-		Goto :Goto
-	) Else If /I "%Options%"=="CMD" (
+		goto :goto
+	) else if /I "%Options%"=="CMD" (
 		Set "Options="
-		Goto :CMD
-	) Else If /I "%Options%"=="PS" (
+		goto :CMD
+	) else if /I "%Options%"=="PS" (
 		Set "Options="
-		Goto :PS
-	) Else If /I "%Options%"=="Exit" (
+		goto :PS
+	) else if /I "%Options%"=="exit" (
 		Set "Options="
-		Exit
-	) Else (
+		exit
+	) else (
 		Set "Options="
-		Cls
-		Title Options Error^^!
-		Echo    ____                   __
-		Echo   / __/__________  ____  / /
-		Echo  / _// __/ __/ _ \/ __/ /_/
-		Echo /___/_/ /_/  \___/_/   (_^)
-		Echo.
-		Echo Error^^! Enter one of the given options. Press any key to return to Options...
-		Pause >nul
-		Cls
-		Goto :Options
+		cls
+		title Options Error^^!
+		echo    ____                   __
+		echo   / __/__________  ____  / /
+		echo  / _// __/ __/ _ \/ __/ /_/
+		echo /___/_/ /_/  \___/_/   (_^)
+		echo.
+		echo Error^^! Enter one of the given options. Press any key to return to Options...
+		pause >nul
+		cls
+		goto :Options
 	)
 
-:Goto
-	Echo.
-	Echo Below is an outline of the sections of this program.
-	Echo.
-	Echo -ProgramInitialization
-	Echo -MainMenu
-	Echo -EncryptionMenu
-	Echo -TextEncryption
-	Echo -FilesEncryption
-	Echo -DecryptionMenu
-	Echo -TextDecryption
-	Echo -FilesDecryption
-	Echo -Help
-	Echo -Options
-	Echo -Goto
-	Echo -CMD
-	Echo -PS
-	Echo -About
-	Echo -FatalErrorPrevention
-	Echo.
-	Set /P Goto=Which section of the program do you want to goto?:
-	If /I "%Goto%"=="ProgramInitialization" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="MainMenu" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="EncryptionMenu" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="TextEncryption" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="FilesEncryption" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="DecryptionMenu" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="TextDecryption" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="FilesDecryption" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="Help" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="Options" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="Goto" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="CMD" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="PS" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="About" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else If /I "%Goto%"=="FatalErrorPrevention" (
-		Echo.
-		Echo Press any key to jump to %Goto%...
-		Pause >nul
-		Goto :%Goto%
-		Set "Goto="
-	) Else (
+:goto
+	echo.
+	echo Below is an outline of the sections of this program.
+	echo.
+	echo -ProgramInitialization
+	echo -MainMenu
+	echo -EncryptionMenu
+	echo -TextEncryption
+	echo -FilesEncryption
+	echo -DecryptionMenu
+	echo -TextDecryption
+	echo -FilesDecryption
+	echo -Help
+	echo -Options
+	echo -goto
+	echo -CMD
+	echo -PS
+	echo -About
+	echo -FatalErrorPrevention
+	echo.
+	Set /P goto=Which section of the program do you want to goto?:
+	if /I "%goto%"=="ProgramInitialization" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="MainMenu" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="EncryptionMenu" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="TextEncryption" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="FilesEncryption" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="DecryptionMenu" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="TextDecryption" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="FilesDecryption" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="Help" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="Options" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="goto" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="CMD" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="PS" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="About" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else if /I "%goto%"=="FatalErrorPrevention" (
+		echo.
+		echo Press any key to jump to %goto%...
+		pause >nul
+		goto :%goto%
+		Set "goto="
+	) else (
 		Set "Options="
-		Echo.
-		Echo Error^^! The section you entered doesn't exist. Press any key to return to Options...
-		Pause >nul
-		Cls
-		Goto :Options
+		echo.
+		echo Error^^! The section you entered doesn't exist. Press any key to return to Options...
+		pause >nul
+		cls
+		goto :Options
 	)
 
 :CMD
-	Cls
-	Title CMD
-	Echo   _______  ______
-	Echo  / ___/  ^|/  / _ \
-	Echo / /__/ /^|_/ / // /
-	Echo \___/_/  /_/____/
-	Echo.
-	Echo -Type "Back" to return to Options.
-	Echo -Type any Command Prompt Batch command to run that command.
-	Echo.
+	cls
+	title CMD
+	echo   _______  ______
+	echo  / ___/  ^|/  / _ \
+	echo / /__/ /^|_/ / // /
+	echo \___/_/  /_/____/
+	echo.
+	echo -Type "Back" to return to Options.
+	echo -Type any Command Prompt Batch command to run that command.
+	echo.
 	Set /P CMD=Enter a command:
-	If /I "%~1%CMD%"=="Back" (
+	if /I "%~1%CMD%"=="Back" (
 		Set "CMD="
-		Goto :Options
-	) Else (
+		goto :Options
+	) else (
 		Set "CMD="
-		Echo.
+		echo.
 		%CMD%
-		Echo.
-		Pause
-		Goto :CMD
+		echo.
+		pause
+		goto :CMD
 	)
 
 :PS
-	Cls
-	Title PowerShell
-	Echo    ___                     ______       ____
-	Echo   / _ \___ _    _____ ____/ __/ /  ___ / / /
-	Echo  / ___/ _ \ ^|/^|/ / -_) __/\ \/ _ \/ -_) / /
-	Echo /_/   \___/__,__/\__/_/ /___/_//_/\__/_/_/
-	Echo.
-	Echo -Type "Back" to return to Options.
-	Echo -Type any PowerShell command to run that command.
-	Echo.
+	cls
+	title PowerShell
+	echo    ___                     ______       ____
+	echo   / _ \___ _    _____ ____/ __/ /  ___ / / /
+	echo  / ___/ _ \ ^|/^|/ / -_) __/\ \/ _ \/ -_) / /
+	echo /_/   \___/__,__/\__/_/ /___/_//_/\__/_/_/
+	echo.
+	echo -Type "Back" to return to Options.
+	echo -Type any PowerShell command to run that command.
+	echo.
 	Set /P PS=Enter a command:
-	If /I "%~1%PS%"=="Back" (
+	if /I "%~1%PS%"=="Back" (
 		Set "PS="
-		Goto :Options
-	) Else (
+		goto :Options
+	) else (
 		Set "PS="
-		Echo.
+		echo.
 		PowerShell %PS%
-		Echo.
-		Pause
-		Goto :PS
+		echo.
+		pause
+		goto :PS
 	)
 
 :About
-	Cls
-	Title About
-	Echo    ___   __             __
-	Echo   / _ ^| / /  ___  __ __/ /_
-	Echo  / __ ^|/ _ \/ _ \/ // / __/
-	Echo /_/ ^|_/_.__/\___/\_,_/\__/
-	Echo.
-	Echo -Program Version: 6.7.2017
-	Echo -Programming By: Joshua Ciffer
-	Echo -Programming Resources: https://www.ss64.com/nt/
-	Echo 	-Batch Commands Guide
-	Echo -ASCII Text By: https://www.Patorjk.com/Software/Taag/
-	Echo 	-Font: Small Slant
-	Echo.
-	Echo Press any key to return to the Main Menu...
-	Pause >nul
-	Cls
-	Goto :MainMenu
+	cls
+	title About
+	echo    ___   __             __
+	echo   / _ ^| / /  ___  __ __/ /_
+	echo  / __ ^|/ _ \/ _ \/ // / __/
+	echo /_/ ^|_/_.__/\___/\_,_/\__/
+	echo.
+	echo -Program Version: 6.7.2017
+	echo -Programming By: Joshua Ciffer
+	echo -Programming Resources: https://www.ss64.com/nt/
+	echo 	-Batch Commands Guide
+	echo -ASCII Text By: https://www.Patorjk.com/Software/Taag/
+	echo 	-Font: Small Slant
+	echo.
+	echo Press any key to return to the Main Menu...
+	pause >nul
+	cls
+	goto :MainMenu
 
 :FatalErrorPrevention
-	Else (
-		Cls
-		Title FATAL ERROR^^!
-		Echo    ____                   __
-		Echo   / __/__________  ____  / /
-		Echo  / _// __/ __/ _ \/ __/ /_/
-		Echo /___/_/ /_/  \___/_/   (_^)
-		Echo.
-		Echo An unhandled exception has occurred. Press any key to restart the program...
-		Pause >nul
-		Cls
-		Goto :ProgramInitialization
-		Pause
-		Exit
+	else (
+		cls
+		title FATAL ERROR^^!
+		echo    ____                   __
+		echo   / __/__________  ____  / /
+		echo  / _// __/ __/ _ \/ __/ /_/
+		echo /___/_/ /_/  \___/_/   (_^)
+		echo.
+		echo An unhandled exception has occurred. Press any key to restart the program...
+		pause >nul
+		cls
+		goto :ProgramInitialization
+		pause
+		exit
 	)
-
-::END OF PROGRAM::
