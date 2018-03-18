@@ -22,9 +22,6 @@ set arg2=%3
 set arg3=%4
 set arg4=%5
 set arg5=%6
-set arg6=%7
-set arg7=%8
-set arg8=%9
 
 :: Determines command behavior based on what command line arguments were passed.
 :parseArgs
@@ -36,7 +33,7 @@ set arg8=%9
 	) else if /i "%command%"=="encrypt" (
 		call encrypt.bat %arg1% %arg2% %arg3% %arg4% %arg5%
 	) else if /i "%command%"=="decrypt" (
-		call decrypt.bat %arg1% %arg2% %arg3% %arg4% %arg5% %arg6% %arg7% %arg8%
+		call decrypt.bat %arg1% %arg2% %arg3% %arg4% %arg5%
 	) else (
 		call :unrecognizedCommand
 	)
