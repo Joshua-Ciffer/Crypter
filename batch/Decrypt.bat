@@ -30,7 +30,49 @@ set outputPath=
 :: Determines command behavior based on what command line arguments were passed.
 :parseArgs
 (
-	
+	if /i "%arg1%"=="" (
+		call :help
+	) else if /i "%arg1%"=="-help" (
+		if /i "%arg2%"=="" (
+			call :help
+		) else (
+			call :incorrectOptionUse
+		)
+	) else if /i "%arg1%"=="-string" (
+		set inputMode=string
+		if /i "%arg2%"=="" (
+			set saveOutput=false
+			java -cp ../bin src.crypter.Main
+		) else if /i "%arg2%"=="-save" (
+			set saveOutput=true
+			if /i "%arg3%"=="" (
+				call :incorrectOptionUse
+			) else (
+				set outputPath=%arg3%
+				java -cp ../bin src.crypter.Main
+			)
+		) else (
+			call :incorrectOptionUse
+		)
+	) else if /i "%arg1%"=="-file" (
+		set inputMode=file
+		if /i "%arg2%"=="" (
+			call :incorrectOptionUse
+		) else (
+			if /i "%arg3%"=="-save" (
+				if /i "%arg4%"=="" (
+					call :incorrectOptionUse
+				) else (
+					java -cp ../bin src.crypter.Main
+				)
+			) else (
+				java -cp ../bin src.crypter.Main
+			)
+		)
+	) else (
+		call :incorrectOptionUse
+	)
+	goto :eof
 )
 
 :: Displays command usage information.

@@ -39,29 +39,45 @@ set outputPath=
 	if /i "%arg1%"=="" (
 		call :help
 	) else if /i "%arg1%"=="-help" (
-		call :help
+		if /i "%arg2%"=="" (
+			call :help
+		) else (
+			call :incorrectOptionUse
+		)
 	) else if /i "%arg1%"=="-string" (
 		set inputMode=string
-		if /i "%arg2%"=="-save" (
-			set saveOutput=true
-			set outputPath=%arg3%
-		) else (
+		if /i "%arg2%"=="" (
 			set saveOutput=false
+			:: java -cp ../bin src.crypter.Main
+		) else if /i "%arg2%"=="-save" (
+			set saveOutput=true
+			if /i "%arg3%"=="" (
+				call :incorrectOptionUse
+			) else (
+				set outputPath=%arg3%
+				:: java -cp ../bin src.crypter.Main
+			)
+		) else (
+			call :incorrectOptionUse
 		)
-		java /../bin/src/crypter/Main %inputMode% %inputPath% %saveOutput% 
 	) else if /i "%arg1%"=="-file" (
-		set inputPath=%arg2%
-		if /i "%arg3%"=="-save" (
-			set saveOutput=true
-			set outputPath=%arg4%
+		set inputMode=file
+		if /i "%arg2%"=="" (
+			call :incorrectOptionUse
 		) else (
-			set saveOutput=false
+			if /i "%arg3%"=="-save" (
+				if /i "%arg4%"=="" (
+					call :incorrectOptionUse
+				) else (
+					:: java -cp ../bin src.crypter.Main
+				)
+			) else (
+				:: java -cp ../bin src.crypter.Main
+			)
 		)
-		java -cp ../bin src.crypter.Main %inputMode% %inputPath% %saveOutput% %outputPath%
 	) else (
 		call :incorrectOptionUse
 	)
-
 	goto :eof
 )
 
