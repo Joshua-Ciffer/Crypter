@@ -42,7 +42,7 @@ set arg8=%9
 	)
 	goto :eof
 )
-	
+
 :: Displays command usage information.
 :help
 (
@@ -60,7 +60,7 @@ set arg8=%9
 	echo 	Source Code: https://github.com/Joshua-Ciffer/Crypter
 	goto :eof
 )
-	
+
 :unrecognizedCommand
 (
 	echo.
@@ -73,5 +73,5 @@ set arg8=%9
 (
 	exit /b %ERRORLEVEL%
 )
-	
+
 endlocal
