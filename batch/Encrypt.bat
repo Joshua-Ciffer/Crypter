@@ -4,8 +4,6 @@ setlocal
 :: Version: 03/17/2018
 :: This file executes commands to encrypt text.
 
-echo Inside encrypt.bat
-
 :: Options and command line arguments.
 set arg1=%1
 set arg2=%2
@@ -29,29 +27,29 @@ set inputPath=
 :: The path of the output file.  Only used if -save is used.
 set outputPath=
 
-set error=
-
 :: Determines command behavior based on what command line arguments were passed.
-:parseArgs (
-	echo arg0=%0 arg1=%1 arg2=%2 arg3=%3 arg4=%4
+:parseArgs
 	echo test4
 	if /i "%arg1%"=="" (
 		call :help
-		echo test3
+		echo test 45
 	) else if /i "%arg1%"=="-help" (
+		echo trdt 
 		if /i "%arg2%"=="" (
+			echo dsf
 			call :help
 		) else (
+			echo dfgj
 			call :incorrectOptionUse
 		)
-		echo test1
+		echo gfh
 	) else if /i "%arg1%"=="-string" (
 		set inputMode=string
 		if /i "%arg2%"=="-save" (
-			if /i "%arg4%"="" (
+			if /i "%arg4%"=="" (
 				set saveOutput=true
 				set outputPath=%~f3
-				:: Encrypt
+				REM Encrypt
 			) else (
 				call :incorrectOptionUse
 			)
@@ -68,7 +66,7 @@ set error=
 		set inputMode=file
 		set inputPath=%~f2
 		if /i "%arg3%"=="-save" (
-			if /i "%arg5%"="" (
+			if /i "%arg5%"=="" (
 				set saveOutput=true
 				set outputPath=%~f4
 				:: Encrypt
@@ -87,7 +85,6 @@ set error=
 		call :incorrectOptionUse
 	)
 	goto :eof
-)
 
 
 :TextEncryption
@@ -135,14 +132,9 @@ set error=
 	echo.
 	pause
 	goto :TextEncryption
-
-:incorrectOptionUse
-	echo.
-	echo Incorrect usage of options.  Please refer to the command usage.
-	call :help
-	goto :eof
 	
 :help
+(
 	echo.
 	echo Usage: Crypter Encrypt [-help] ^| [-string ^| [-file input-path]] [-save output-path]
 	echo.
@@ -156,12 +148,19 @@ set error=
 	echo 	Version: %version%
 	echo 	Source Code: https://github.com/Joshua-Ciffer/Crypter
 	goto :eof
-
-:eof (
-	if /i "%error%"=="" (
-		exit /b 0
-	) else (
-		exit /b %error%
-	)
+)
+	
+:incorrectOptionUse
+(
+	echo.
+	echo Incorrect usage of options.  Please refer to the command usage.
+	call :help
+	goto :eof
 )	
+
+:eof
+(
+	exit /b %ERRORLEVEL%
+)
+
 endlocal
