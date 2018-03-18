@@ -4,6 +4,9 @@ setlocal
 :: Version: 03/17/2018
 :: This file is the main command that calls subscripts and functions for the Crypter program.
 
+:: To Be Implemented:
+:: 		Allow user to specify encryption key from their own file with a command line argument.
+
 :: Program version.
 set version=3.17.18
 
@@ -23,10 +26,9 @@ set arg6=%7
 set arg7=%8
 set arg8=%9
 
-echo arg0=%parent% arg1=%command% arg2=%arg1% arg3=%arg2% arg4=%arg3% arg5=%arg4% arg6=%arg5% arg7=%arg6% arg8=%arg7% arg9=%arg8%
-	
 :: Determines command behavior based on what command line arguments were passed.
 :parseArgs
+(
 	if /i "%command%"=="" (
 		call :help
 	) else if /i "%command%"=="help" (
@@ -36,13 +38,14 @@ echo arg0=%parent% arg1=%command% arg2=%arg1% arg3=%arg2% arg4=%arg3% arg5=%arg4
 	) else if /i "%command%"=="decrypt" (
 		call decrypt.bat %arg1% %arg2% %arg3% %arg4% %arg5% %arg6% %arg7% %arg8%
 	) else (
-		echo.
-		echo Unrecognized command.
-		call :help
+		call :unrecognizedCommand
 	)
 	goto :eof
+)
 	
+:: Displays command usage information.
 :help
+(
 	echo.
 	echo Usage: Crypter ^<command^> [^<options^>] [args]
 	echo.
@@ -56,5 +59,19 @@ echo arg0=%parent% arg1=%command% arg2=%arg1% arg3=%arg2% arg4=%arg3% arg5=%arg4
 	echo 	Version: %version%
 	echo 	Source Code: https://github.com/Joshua-Ciffer/Crypter
 	goto :eof
+)
+	
+:unrecognizedCommand
+(
+	echo.
+	echo Unrecognized command.  Please refer to the command usage.
+	call :help
+	goto :eof
+)
 
+:eof
+(
+	exit /b %ERRORLEVEL%
+)
+	
 endlocal
