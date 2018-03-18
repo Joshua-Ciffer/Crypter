@@ -8,32 +8,32 @@ setlocal
 :: 		Allow user to specify encryption key from their own file with a command line argument.
 
 :: Program version.
-set version=3.18.18
+set _version=3.18.18
 
 :: The name of this file.
-set parent=%0
+set _parent=%0
 
 :: The command to execute.
-set command=%1
+set _command=%1
 
 :: Options and command arguments.
-set arg1=%2
-set arg2=%3
-set arg3=%4
-set arg4=%5
-set arg5=%6
+set _arg1=%2
+set _arg2=%3
+set _arg3=%4
+set _arg4=%5
+set _arg5=%6
 
 :: Determines command behavior based on what command line arguments were passed.
 :parseArgs
 (
-	if /i "%command%"=="" (
+	if /i "%_command%"=="" (
 		call :help
-	) else if /i "%command%"=="help" (
+	) else if /i "%_command%"=="help" (
 		call :help
-	) else if /i "%command%"=="encrypt" (
-		call encrypt.bat %arg1% %arg2% %arg3% %arg4% %arg5%
+	) else if /i "%_command%"=="encrypt" (
+		call encrypt %_arg1% %_arg2% %_arg3% %_arg4% %_arg5%
 	) else if /i "%command%"=="decrypt" (
-		call decrypt.bat %arg1% %arg2% %arg3% %arg4% %arg5%
+		call decrypt %_arg1% %_arg2% %_arg3% %_arg4% %_arg5%
 	) else (
 		call :unrecognizedCommand
 	)
@@ -52,7 +52,7 @@ set arg5=%6
 	echo 	Help
 	echo About
 	echo 	Written by: Joshua Ciffer
-	echo 	Version: %version%
+	echo 	Version: %_version%
 	echo 	Source Code: https://github.com/Joshua-Ciffer/Crypter
 	goto :eof
 )
