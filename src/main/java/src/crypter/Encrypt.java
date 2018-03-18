@@ -8,8 +8,6 @@ package src.crypter;
  */
 public class Encrypt {
 
-	public static void main(String[] args) {
-		
-	}
+	
 	
 }
