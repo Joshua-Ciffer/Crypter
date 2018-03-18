@@ -16,3 +16,11 @@ batch/Tester.bat
 /.settings/
 /.project
 /.classpath
+/bin/
+
+# Compiled Files
+/bin/
+*.class
+
+# JVM Crash Logs
+hs_err_pid*
