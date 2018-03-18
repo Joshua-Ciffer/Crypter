@@ -1,14 +1,14 @@
 @echo off
 setlocal
 :: Author: Joshua Ciffer
-:: Version: 03/17/2018
+:: Version: 03/18/2018
 :: This file is the main command that calls subscripts and functions for the Crypter program.
 
 :: To Be Implemented:
 :: 		Allow user to specify encryption key from their own file with a command line argument.
 
 :: Program version.
-set version=3.17.18
+set version=3.18.18
 
 :: The name of this file.
 set parent=%0
@@ -58,6 +58,7 @@ set arg5=%6
 	goto :eof
 )
 
+:: Called when an incorrect command is called.
 :unrecognizedCommand
 (
 	echo.
@@ -66,6 +67,8 @@ set arg5=%6
 	goto :eof
 )
 
+
+:: End of file.
 :eof
 (
 	exit /b %ERRORLEVEL%
