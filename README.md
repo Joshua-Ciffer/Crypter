@@ -1,2 +1,2 @@
 # Crypter
-Simple Text Encryption in Batch
+Simple command line text encryption.
