@@ -50,7 +50,6 @@ set arg5=%6
 	echo 	Encrypt
 	echo 	Decrypt
 	echo 	Help
-	echo.
 	echo About
 	echo 	Written by: Joshua Ciffer
 	echo 	Version: %version%

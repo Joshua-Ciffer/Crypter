@@ -4,6 +4,9 @@ setlocal
 :: Version: 03/18/2018
 :: This file executes commands to decrypt text.
 
+:: The name of this command.
+set command=%0
+
 :: Options and command line arguments.
 set arg1=%1
 set arg2=%2
@@ -42,14 +45,18 @@ set outputPath=
 		set inputMode=string
 		if /i "%arg2%"=="" (
 			set saveOutput=false
-			java -cp ../bin src.crypter.Main
+			java -cp ../bin src.crypter.Main %command% %inputMode% %saveOutput%
 		) else if /i "%arg2%"=="-save" (
 			set saveOutput=true
 			if /i "%arg3%"=="" (
 				call :incorrectOptionUse
 			) else (
 				set outputPath=%arg3%
-				java -cp ../bin src.crypter.Main
+				if /i "%arg4%"=="" (
+					java -cp ../bin src.crypter.Main %command% %inputMode% %saveOutput% %outputPath%
+				) else (
+					call :incorrectOptionUse
+				)
 			)
 		) else (
 			call :incorrectOptionUse
@@ -59,14 +66,26 @@ set outputPath=
 		if /i "%arg2%"=="" (
 			call :incorrectOptionUse
 		) else (
+			set inputPath=%arg2%
 			if /i "%arg3%"=="-save" (
+				set saveOutput=true
 				if /i "%arg4%"=="" (
 					call :incorrectOptionUse
 				) else (
-					java -cp ../bin src.crypter.Main
+					set outputPath=%arg4%
+					if /i "%arg5%"=="" (
+						java -cp ../bin src.crypter.Main %command% %inputMode% %inputPath% %saveOutput% %outputPath%
+					) else (
+						call :incorrectOptionUse
+					)
 				)
 			) else (
-				java -cp ../bin src.crypter.Main
+				set saveOutput=false
+				if /i "%arg3%"=="" (
+					java -cp ../bin src.crypter.Main %command% %inputMode% %inputPath% %saveOutput%
+				) else (
+					call :incorrectOptionUse
+				)
 			)
 		)
 	) else (
