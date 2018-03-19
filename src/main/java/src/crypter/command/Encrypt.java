@@ -3,7 +3,11 @@ package src.crypter.command;
 import java.util.Scanner;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.io.IOException;
+import java.io.FileNotFoundException;
 import src.crypter.util.InputMode;
 
 /**
@@ -104,7 +108,21 @@ public class Encrypt {
 	 * @param outputPath - The path of the output file.
 	 */
 	private static void saveOutput(String outputPath) {
-
+		File file = new File(outputPath);
+		try {
+			file.createNewFile();
+			PrintStream fileWriter = null;
+			try {
+				fileWriter = new PrintStream(new FileOutputStream(file));
+				fileWriter.println(encryptedString);
+			} catch (FileNotFoundException e) {
+				System.err.println("\nThe output file could not be created.");
+				System.exit(2);
+			}
+		} catch (IOException e) {
+			System.err.println("\nThe output file could not be saved.");
+			System.exit(2);
+		}
 	}
 
 }
