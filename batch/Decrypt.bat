@@ -1,5 +1,5 @@
 @echo off
-setlocal
+setlocal EnableExtensions EnableDelayedExpansion
 :: Author: Joshua Ciffer
 :: Version: 03/18/2018
 :: This file executes commands to decrypt text.
@@ -45,7 +45,7 @@ set outputPath=
 		set inputMode=string
 		if /i "%arg2%"=="" (
 			set saveOutput=false
-			java -cp ../bin src.crypter.Main %command% %inputMode% %saveOutput%
+			java -cp ../bin src.crypter.Main !command! !inputMode! !saveOutput!
 		) else if /i "%arg2%"=="-save" (
 			set saveOutput=true
 			if /i "%arg3%"=="" (
@@ -53,7 +53,7 @@ set outputPath=
 			) else (
 				set outputPath=%arg3%
 				if /i "%arg4%"=="" (
-					java -cp ../bin src.crypter.Main %command% %inputMode% %saveOutput% %outputPath%
+					java -cp ../bin src.crypter.Main !command! !inputMode! !saveOutput! !outputPath!
 				) else (
 					call :incorrectOptionUse
 				)
@@ -74,7 +74,7 @@ set outputPath=
 				) else (
 					set outputPath=%arg4%
 					if /i "%arg5%"=="" (
-						java -cp ../bin src.crypter.Main %command% %inputMode% %inputPath% %saveOutput% %outputPath%
+						java -cp ../bin src.crypter.Main !command! !inputMode! !inputPath! !saveOutput! !outputPath!
 					) else (
 						call :incorrectOptionUse
 					)
@@ -82,7 +82,7 @@ set outputPath=
 			) else (
 				set saveOutput=false
 				if /i "%arg3%"=="" (
-					java -cp ../bin src.crypter.Main %command% %inputMode% %inputPath% %saveOutput%
+					java -cp ../bin src.crypter.Main !command! !inputMode! !inputPath! !saveOutput!
 				) else (
 					call :incorrectOptionUse
 				)
