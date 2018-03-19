@@ -1,4 +1,5 @@
 package src.crypter;
+
 import src.crypter.command.Encrypt;
 import src.crypter.command.Decrypt;
 import src.crypter.util.Command;
@@ -47,11 +48,13 @@ class Main {
 	 * @param args - Command line arguments.
 	 */
 	public static void main(String[] args) {
-		for (int i = 0; i < args.length; i++) {
-			System.out.println("#" + i + ": " + args[i]);
+		try {
+			parseCommandLineArguments(args);
+			callCommand(command);
+		} catch (IllegalArgumentException e) {
+			System.err.println("\n" + e);
+			System.exit(1);
 		}
-		parseCommandLineArguments(args);
-		callCommand(command);
 	}
 
 	/**
@@ -106,8 +109,9 @@ class Main {
 	 * Calls the command class that was called by the crypter batch file.
 	 *
 	 * @param command - The command to call.
+	 * @throws IllegalArgumentException - Thrown if a command was not specified.
 	 */
-	private static void callCommand(Command command) {
+	private static void callCommand(Command command) throws IllegalArgumentException {
 		switch (command) {
 			case ENCRYPT: {
 				Encrypt.runCommand(inputMode, inputPath, saveOutput, outputPath);
