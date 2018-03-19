@@ -68,7 +68,7 @@ public class Encrypt {
 	 */
 	private static String inputString() {
 		Scanner userInput = new Scanner(System.in);
-		System.out.print("\nEnter a string to encrypt: ");
+		System.out.print("\nEnter a string to be encrypted: ");
 		String inputtedString = userInput.nextLine();
 		userInput.close();
 		userInput = null;
