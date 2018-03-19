@@ -1,4 +1,4 @@
-package src.crypter;
+package src.crypter.command;
 
 /**
  * 
