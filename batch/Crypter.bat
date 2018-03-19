@@ -1,7 +1,7 @@
 @echo off
 setlocal EnableExtensions
 :: Author: Joshua Ciffer
-:: Version: 03/18/2018
+:: Version: 03/19/2018
 :: This file is the main command that calls subscripts and functions for the Crypter program.
 
 :: To Be Implemented:
