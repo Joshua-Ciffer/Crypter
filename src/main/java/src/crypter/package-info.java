@@ -1,5 +1,5 @@
 /**
- * This package contains the main code to encrypt and decrypt text that is called by the Crypter batch files.
+ * This package contains the main entry point called by the crypter batch file.
  *
  * @author Joshua Ciffer
  * @version 03/18/2018
